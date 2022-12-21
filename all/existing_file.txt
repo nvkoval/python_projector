@@ -1,0 +1,3 @@
+
+Nowadays, with all these data we consume and generate every single day, algorithms must be good enough to handle operations in large volumes of data.
+In this post, we will understand a little more about time complexity, Big-O notation and why we need to be concerned about it when developing algorithms.
