@@ -14,8 +14,10 @@ updater = Updater(bot_token, use_context=True)
 
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
-        "Hello sir, Welcome to the Bot.Please write\
-        /help to see the commands available.")
+        "Hey! Вітаємо у Futurium English School боті - \
+        твоєму помічнику на шляху у вивченні англійської💛\
+        Щоб ми могли вам краще допомогти - підкажіть нам ваш статус у школі ⬇️.\
+        Please write /help to see the commands available.")
 
 
 def help(update: Update, context: CallbackContext):
