@@ -6,7 +6,7 @@ from telegram.update import Update
 from telegram.ext.callbackcontext import CallbackContext
 from telegram.ext.filters import Filters
 
-bot_token = '5905341866:AAEB13WoTNbjxxS61vNdFNJKGcriiKGkywg'
+bot_token = '{TOKEN}'
 bot_user_name = "futurium_bot"
 
 updater = Updater(bot_token, use_context=True)
