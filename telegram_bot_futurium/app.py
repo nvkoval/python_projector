@@ -45,10 +45,10 @@ async def main():
 
     config = load_config(".env")
 
-    bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
+    bot = Bot(token=config.tg_bot.token, parse_mode="HTML")
 
-    storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage
-    dp = Dispatcher(bot) # , storage=storage)
+    storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage()
+    dp = Dispatcher(bot, storage=storage)
 
     await set_main_menu(dp)
 
