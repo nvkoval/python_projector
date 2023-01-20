@@ -1,6 +1,5 @@
-# from aiogram.dispatcher import FSMContext
 from aiogram import Dispatcher
-from aiogram.types import CallbackQuery, Message
+from aiogram.types import Message
 from tg_bot.keyboards.inline import create_inline_kb
 from tg_bot.texts.texts import TEXTS
 
@@ -13,5 +12,7 @@ async def cmd_start(message: Message):
 
 
 
+
+
 def register_cmd_start(dp: Dispatcher):
-    dp.register_message_handler(cmd_start, commands=["start"], state="*")
+    dp.register_message_handler(cmd_start, commands=["start"])

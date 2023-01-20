@@ -1,9 +1,7 @@
 from aiogram import Dispatcher
-from aiogram.dispatcher import FSMContext
-from aiogram.types import (CallbackQuery, Message, ContentType,
-                            InlineKeyboardMarkup, InlineKeyboardButton)
+from aiogram.types import (Message, ContentType,
+                           InlineKeyboardMarkup, InlineKeyboardButton)
 from tg_bot.keyboards.inline import create_inline_kb
-
 from tg_bot.texts.texts import TEXTS
 
 
@@ -18,14 +16,13 @@ async def contact_command(message: Message):
     await message.answer(text, reply_markup=keyboard_url)
 
 
-async def bot_echo(message: Message, state="*"):
-    await message.answer(f"It's your echo: {message.text}")
+async def unknown_text(message: Message):
+    await message.answer(TEXTS["unknown_text"])
 
 
-def register_contact_command(dp):
+def register_contact_command(dp: Dispatcher):
     dp.register_message_handler(contact_command, commands='contact')
 
 
-def register_echo(dp: Dispatcher):
-    dp.register_message_handler(bot_echo, state='*',
-                                content_types=ContentType.ANY)
+def register_unknown_text(dp: Dispatcher):
+    dp.register_message_handler(unknown_text, content_types=ContentType.ANY)

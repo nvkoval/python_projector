@@ -5,11 +5,11 @@ from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
-# from tg_bot.filters.admin import AdminFilter
-from tg_bot.handlers.other_handlers import register_echo, register_contact_command
+from tg_bot.handlers.other_handlers import (register_contact_command,
+                                            register_unknown_text)
 from tg_bot.handlers.user_start import register_cmd_start
-from tg_bot.handlers.interested_handler import register_interested_start
-from tg_bot.handlers.student_handlers import register_student_start
+from tg_bot.handlers.interested_handler import register_interested_person
+from tg_bot.handlers.student_handlers import register_student
 
 from tg_bot.config import load_config
 from tg_bot.keyboards.menu_button import set_main_menu
@@ -24,17 +24,16 @@ def register_all_middlewares(dp, config):
 
 
 def register_all_filters(dp):
-    #dp.filters_factory.bind(AdminFilter)
+    # dp.filters_factory.bind(AdminFilter)
     pass
 
 
 def register_all_handlers(dp):
     register_cmd_start(dp)
     register_contact_command(dp)
-    register_student_start(dp)
-    register_interested_start(dp)
-
-    register_echo(dp)
+    register_student(dp)
+    register_interested_person(dp)
+    register_unknown_text(dp)
 
 
 async def main():
@@ -45,10 +44,10 @@ async def main():
 
     config = load_config(".env")
 
-    bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
+    bot = Bot(token=config.tg_bot.token, parse_mode="HTML")
 
-    storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage
-    dp = Dispatcher(bot) # , storage=storage)
+    storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage()
+    dp = Dispatcher(bot, storage=storage)
 
     await set_main_menu(dp)
 

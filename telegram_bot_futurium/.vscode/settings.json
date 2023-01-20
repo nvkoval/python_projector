@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./tg_bot/texts"
+    ]
+}
