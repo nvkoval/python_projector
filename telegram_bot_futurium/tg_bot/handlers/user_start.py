@@ -1,17 +1,16 @@
 from aiogram import Dispatcher
 from aiogram.types import Message
 from tg_bot.keyboards.inline import create_inline_kb
+from tg_bot.services.servives import register_user
 from tg_bot.texts.texts import TEXTS
 
 
 # hendler for /start command
 async def cmd_start(message: Message):
+    user = register_user(message)
     text = TEXTS['hello']
     keyboard = create_inline_kb(2, "student", "interested")
     await message.answer(text, reply_markup=keyboard)
-
-
-
 
 
 def register_cmd_start(dp: Dispatcher):

@@ -49,6 +49,7 @@ async def main():
     storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage()
     dp = Dispatcher(bot, storage=storage)
 
+
     await set_main_menu(dp)
 
     bot['config'] = config
