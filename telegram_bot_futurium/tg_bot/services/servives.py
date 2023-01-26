@@ -6,7 +6,7 @@ from tg_bot.db.database import session
 
 def register_user(message):
     username = message.from_user.username if message.from_user.username else None
-    user = Users(id=int(message.from_user.id), username=username, name=message.from_user.full_name)
+    user = Users(id=int(message.from_user.id), username=username)
     try:
         session.add(user)
         session.commit()
