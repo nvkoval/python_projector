@@ -1,7 +1,0 @@
-.env
-/env
-__pycache__/
-.gitignore
-tgbot_futurium.json
-.vscode/*
-.vscode
