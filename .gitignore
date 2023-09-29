@@ -1,7 +1,8 @@
-/all
-requirements.txt
-/.vscode
-/all_about_bot
 .gitconfig
 .gitignore
+requirements.txt
+
+/.vscode
+/all_about_bot
+/all
 /telegram_bot_futurium_BD
